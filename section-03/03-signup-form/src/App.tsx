@@ -7,6 +7,8 @@ function App() {
     const formData = new FormData(formElement);
     const email = formData.get("email");
     console.log("email", email);
+    const password = formData.get("password");
+    console.log("password", password);
     formElement.reset();
   }
 
