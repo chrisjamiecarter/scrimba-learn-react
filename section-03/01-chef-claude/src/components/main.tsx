@@ -26,9 +26,11 @@ export default function Main(): JSX.Element {
 
   function handleFormSubmit(event: FormEvent) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget as HTMLFormElement);
+    const formElement = event.currentTarget as HTMLFormElement;
+    const formData = new FormData(formElement);
     const newIngredient = formData.get("ingredient");
     addIngredient(newIngredient as string);
+    formElement.reset();
   }
 
   return (
