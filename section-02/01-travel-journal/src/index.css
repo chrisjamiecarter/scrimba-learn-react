@@ -1,0 +1,102 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-width: 0;
+  color: inherit;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  background-color: #f55a5a;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+}
+
+.container {
+  margin: 3rem 2.5rem;
+}
+
+.header-image {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.header-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.journal-entry {
+  display: flex;
+}
+
+.journal-image-container {
+  height: 10.5rem;
+  width: 7.75rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.journal-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.marker-icon {
+  width: 0.5rem;
+  margin-right: 0.25rem;
+}
+
+.info-container span.country {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-right: 0.75rem;
+}
+
+.info-container a {
+  font-size: 0.7rem;
+}
+
+.info-container a:visited {
+  color: #918e9b;
+}
+
+.entry-title {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.entry-dates {
+  font-weight: bold;
+}
+
+.entry-text {
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.journal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
