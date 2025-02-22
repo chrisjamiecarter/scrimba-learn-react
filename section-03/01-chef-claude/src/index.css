@@ -1,0 +1,77 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #fafaf8ff;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  height: 8rem;
+  background-color: #ffffffff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+
+.header-logo {
+  width: 3rem;
+}
+
+.header-text {
+  font-size: xx-large;
+}
+
+main {
+  padding: 4rem 2rem 0.75rem;
+}
+
+.add-ingredient-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 2.5rem;
+}
+
+.add-ingredient-form > input {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5d8ff;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  min-width: 10rem;
+  max-width: 25rem;
+}
+
+.add-ingredient-form > button {
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #141413ff;
+  color: #fafaf8ff;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.add-ingredient-form > button::before {
+  content: "+ ";
+}
