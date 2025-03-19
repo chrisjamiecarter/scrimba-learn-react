@@ -21,6 +21,9 @@ function App() {
     const dietaryRestrictions = formData.getAll("dietaryRestrictions");
     console.log("dietaryRestrictions", dietaryRestrictions);
 
+    const favouriteColour = formData.get("favColour");
+    console.log("favouriteColour", favouriteColour);
+
     formElement.reset();
   }
 
@@ -114,6 +117,20 @@ function App() {
             Gluten-free
           </label>
         </fieldset>
+
+        <label htmlFor="favcolour">What is your favourite colour?</label>
+        <select id="favColour" name="favColour" defaultValue="" required>
+          <option value="" disabled>
+            -- Choose a colour --
+          </option>
+          <option value="red">Red</option>
+          <option value="orange">Orange</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="indigo">Indigo</option>
+          <option value="violet">Violet</option>
+        </select>
 
         <button type="submit">Signup</button>
       </form>
