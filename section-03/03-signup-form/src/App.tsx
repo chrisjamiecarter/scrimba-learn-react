@@ -3,26 +3,25 @@ import React from "react";
 function App() {
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+
     const formElement = event.currentTarget as HTMLFormElement;
     const formData = new FormData(formElement);
 
-    const email = formData.get("email");
-    console.log("email", email);
+    // One-by-one.
+    // const email = formData.get("email");
+    // const password = formData.get("password");
+    // const description = formData.get("description");
+    // const employmentStatus = formData.get("employmentStatus");
+    // const favouriteColour = formData.get("favColour");
 
-    const password = formData.get("password");
-    console.log("password", password);
-
-    const description = formData.get("description");
-    console.log("description", description);
-
-    const employmentStatus = formData.get("employmentStatus");
-    console.log("employmentStatus", employmentStatus);
-
+    // All-in-one. NOTE: except checkboxes due to array and get all.
     const dietaryRestrictions = formData.getAll("dietaryRestrictions");
-    console.log("dietaryRestrictions", dietaryRestrictions);
+    const data: Record<string, unknown> = {
+      ...Object.fromEntries(formData),
+      dietaryRestrictions,
+    };
 
-    const favouriteColour = formData.get("favColour");
-    console.log("favouriteColour", favouriteColour);
+    console.log("data", data);
 
     formElement.reset();
   }
@@ -119,7 +118,7 @@ function App() {
         </fieldset>
 
         <label htmlFor="favcolour">What is your favourite colour?</label>
-        <select id="favColour" name="favColour" defaultValue="" required>
+        <select id="favColour" name="favColour" defaultValue="blue" required>
           <option value="" disabled>
             -- Choose a colour --
           </option>
