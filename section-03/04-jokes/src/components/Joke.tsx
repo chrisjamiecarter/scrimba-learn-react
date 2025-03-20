@@ -10,10 +10,10 @@ export default function Joke(props: JokeProps): JSX.Element {
   console.log(isShown);
   return (
     <div>
-      {props.setup && <h3>{props.setup}</h3>}
-      {isShown && <p>{props.punchline}</p>}
+      {props.setup ?? <h3>{props.setup}</h3>}
+      {isShown ? <p>{props.punchline}</p> : null}
       <button type="button" onClick={toggleShown}>
-        Show/Hide
+        {isShown ? "Hide" : "Show"} punchline
       </button>
       <hr />
     </div>
