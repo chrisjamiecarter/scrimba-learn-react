@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientsList from "./IngredientsList";
+import { getRecipeFromMistral } from "../lib/ai";
 
 export default function Main(): JSX.Element {
   const [ingredients, setIngredients] = useState<string[]>([
@@ -10,7 +11,7 @@ export default function Main(): JSX.Element {
     "tomato paste",
   ]);
 
-  const [recipeShown, setRecipeShow] = useState<boolean>(false);
+  const [recipe, setRecipe] = useState<string>("");
 
   function addIngredient(ingredient: string) {
     setIngredients((prev) => [...prev, ingredient]);
@@ -20,8 +21,11 @@ export default function Main(): JSX.Element {
     setIngredients((prev) => prev.filter((x) => x !== ingredient));
   }
 
-  function toggleRecipeShown() {
-    setRecipeShow((prev) => !prev);
+  async function getRecipe() {
+    const recipeMarkdown = await getRecipeFromMistral(ingredients);
+    if (recipeMarkdown) {
+      setRecipe(recipeMarkdown);
+    }
   }
 
   function handleFormSubmit(event: FormEvent) {
@@ -46,10 +50,10 @@ export default function Main(): JSX.Element {
       </form>
       <IngredientsList
         ingredients={ingredients}
-        handleGetRecipeClick={toggleRecipeShown}
+        handleGetRecipeClick={getRecipe}
         handleRemoveIngredientClick={removeIngredient}
       />
-      {recipeShown ? <ClaudeRecipe /> : null}
+      {recipe ? <ClaudeRecipe recipe={recipe} /> : null}
     </main>
   );
 }
