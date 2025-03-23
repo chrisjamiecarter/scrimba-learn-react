@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState<number>(0);
+  const [characterId, setCharacterId] = useState<number>(1);
   const [starWarsData, setStarWarsData] = useState({});
 
-  console.log("Rendered!");
-
   useEffect(() => {
-    console.log("Effect ran!");
-    fetch("https://swapi.dev/api/people/1")
+    fetch(`https://swapi.dev/api/people/${characterId}`)
       .then((result) => result.json())
       .then((data) => setStarWarsData(data));
-  }, []);
+  }, [characterId]);
 
   return (
     <div>
-      <h2>The count is {count}</h2>
-      <button onClick={() => setCount((prev) => prev + 1)}>Add</button>
+      <h2>Character ID: {characterId}</h2>
+      <button onClick={() => setCharacterId((prev) => prev + 1)}>
+        Get next character
+      </button>
       <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
     </div>
   );
