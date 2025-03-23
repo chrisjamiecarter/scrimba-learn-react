@@ -1,10 +1,10 @@
-import { MutableRefObject } from "react";
+import { RefObject } from "react";
 
 type IngredientsListProps = {
   ingredients: string[];
   handleGetRecipeClick: () => void;
   handleRemoveIngredientClick: (ingredient: string) => void;
-  recipeSection: MutableRefObject<null>;
+  recipeSection: RefObject<HTMLDivElement>;
 };
 
 export default function IngredientsList(props: IngredientsListProps) {
