@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type Meme = {
   topText: string;
@@ -7,6 +7,16 @@ type Meme = {
 };
 
 const Main = () => {
+  const [memes, setMemes] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((data) => setMemes(data.data.memes));
+  }, []);
+
+  console.log("memes", memes);
+
   const [meme, setMeme] = useState<Meme>({
     topText: "One does not simply",
     bottomText: "Walk into Mordor",
