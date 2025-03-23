@@ -1,4 +1,11 @@
-import { IngredientsListProps } from "../models/IngredientsListProps";
+import { MutableRefObject } from "react";
+
+type IngredientsListProps = {
+  ingredients: string[];
+  handleGetRecipeClick: () => void;
+  handleRemoveIngredientClick: (ingredient: string) => void;
+  recipeSection: MutableRefObject<null>;
+};
 
 export default function IngredientsList(props: IngredientsListProps) {
   const ingredientListItems = props.ingredients.map((ingredient) => (
@@ -22,7 +29,7 @@ export default function IngredientsList(props: IngredientsListProps) {
           </ul>
           {ingredientListItems.length > 3 ? (
             <div className="get-recipe-container">
-              <div>
+              <div ref={props.recipeSection}>
                 <h3>Ready for a recipe?</h3>
                 <p>Generate a recipe from your list of ingredients.</p>
               </div>

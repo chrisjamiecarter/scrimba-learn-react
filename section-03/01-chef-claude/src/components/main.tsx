@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef, useEffect } from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientsList from "./IngredientsList";
 import { getRecipeFromMistral } from "../lib/ai";
@@ -12,6 +12,13 @@ export default function Main(): JSX.Element {
   ]);
 
   const [recipe, setRecipe] = useState<string>("");
+  const recipeSection = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (recipe !== "" && recipeSection.current !== null) {
+      recipeSection.current.scrollIntoView();
+    }
+  }, [recipe]);
 
   function addIngredient(ingredient: string) {
     setIngredients((prev) => [...prev, ingredient]);
@@ -52,6 +59,7 @@ export default function Main(): JSX.Element {
         ingredients={ingredients}
         handleGetRecipeClick={getRecipe}
         handleRemoveIngredientClick={removeIngredient}
+        recipeSection={recipeSection}
       />
       {recipe ? <ClaudeRecipe recipe={recipe} /> : null}
     </main>
