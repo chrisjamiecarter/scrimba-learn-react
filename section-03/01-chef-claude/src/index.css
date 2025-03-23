@@ -73,10 +73,6 @@ ul.ingredients-list > li {
   line-height: 28px;
 }
 
-ul.ingredients-list > li > button {
-  margin-left: 5px;
-}
-
 .get-recipe-container {
   display: flex;
   justify-content: space-between;
