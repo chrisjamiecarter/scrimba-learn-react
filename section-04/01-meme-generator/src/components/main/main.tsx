@@ -6,16 +6,21 @@ type Meme = {
   imageUrl: string;
 };
 
+type MemeResponse = {
+  id: string;
+  name: string;
+  url: string;
+};
+
 const Main = () => {
-  const [memes, setMemes] = useState([]);
+  const [memes, setMemes] = useState<MemeResponse[]>([]);
 
   useEffect(() => {
+    console.log("Fetching Memes");
     fetch("https://api.imgflip.com/get_memes")
       .then((response) => response.json())
       .then((data) => setMemes(data.data.memes));
   }, []);
-
-  console.log("memes", memes);
 
   const [meme, setMeme] = useState<Meme>({
     topText: "One does not simply",
@@ -27,6 +32,14 @@ const Main = () => {
     const { name, value } = event.currentTarget as HTMLInputElement;
     setMeme((prev) => {
       return { ...prev, [name]: value };
+    });
+  }
+
+  function getRandomMeme() {
+    const random = Math.floor(Math.random() * memes.length);
+    const randomMeme = memes[random];
+    setMeme((prev) => {
+      return { ...prev, imageUrl: randomMeme.url };
     });
   }
 
@@ -55,7 +68,7 @@ const Main = () => {
           />
         </label>
 
-        <button>Get a new meme image 🖼</button>
+        <button onClick={getRandomMeme}>Get a new meme image 🖼</button>
       </div>
       <div className="meme">
         <img src={meme.imageUrl} />
